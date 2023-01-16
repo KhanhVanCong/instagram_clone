@@ -18,18 +18,31 @@
 				<% end %>
 
 				<i class="fa-brands fa-facebook-messenger fa-xl"></i>
-
-				<%= link_to new_post_path, class: "text-dark" do %>
+				<a href="#" class="text-dark" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
 					<i class="fa-regular fa-square-plus fa-xl"></i>
-				<% end %>
+				</a>
 				<i class="fa-regular fa-compass fa-xl"></i>
 				<i class="fa-regular fa-heart fa-xl"></i>
-				<% if current_user && current_user.profile_picture.attached? %>
-					<%= image_tag current_user.profile_picture, class: "img-thumbnail rounded-circle", style: "width: 2rem" %>
-				<% else %>
-					<%= image_tag "user_no_pc.png", class: "img-thumbnail rounded-circle", style: "width: 2rem" %>
-				<% end %>
+
+				<div class="dropdown">
+					<a class="" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+						<% if current_user && current_user.profile_picture.attached? %>
+							<%= image_tag current_user.profile_picture, class: "img-thumbnail rounded-circle", style: "width: 2rem" %>
+						<% else %>
+							<%= image_tag "user_no_pc.png", class: "img-thumbnail rounded-circle", style: "width: 2rem" %>
+						<% end %>
+					</a>
+					<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+						<li>
+							<%= button_to "Log out", destroy_user_session_path, class: "dropdown-item", method: :delete %>
+						</li>
+					</ul>
+				</div>
+
+
 			</div>
 		</div>
 	</div>
 </nav>
+
+<%= render "posts/form", post: Post.new %>

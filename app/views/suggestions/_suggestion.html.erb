@@ -1,0 +1,15 @@
+<div class="d-flex justify-content-between">
+	<div class="d-flex">
+		<%= image_tag "user_no_pc.png", class: "img-thumbnail rounded-circle border border-2 border-primary", style: "width: 3.5rem" %>
+		<div class="d-flex flex-column mx-2">
+			<small class="fw-bold">Khanh Van</small>
+			<small class="text-muted overflow-hidden" style="text-overflow: ellipsis ;white-space: nowrap; max-width: 10rem">Suggested for you by instagram</small>
+		</div>
+	</div>
+
+	<%= link_to root_path, class: "text-decoration-none" do %>
+		<small class="fw-bold text-primary">
+			Follow
+		</small>
+	<% end %>
+</div>
