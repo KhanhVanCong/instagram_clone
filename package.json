@@ -9,6 +9,9 @@
     "bootstrap": "^5.2.3",
     "bootstrap-icons": "^1.10.2",
     "esbuild": "^0.15.18",
+    "filepond": "^4.30.4",
+    "filepond-plugin-file-validate-type": "^1.2.8",
+    "filepond-plugin-image-preview": "^4.6.11",
     "sass": "^1.56.1"
   },
   "scripts": {

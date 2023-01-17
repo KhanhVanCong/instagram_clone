@@ -1,0 +1,15 @@
+<% if notice && notice.is_a?(Array) %>
+	<% notice.each do |message| %>
+		<p class="alert alert-success"><%= message %></p>
+	<% end %>
+<% elsif notice && notice.is_a?(String) %>
+	<p class="alert alert-success"><%= notice %></p>
+<% end %>
+
+<% if alert && alert.is_a?(Array) %>
+	<% alert.each do |message| %>
+		<p class="alert alert-danger"><%= message %></p>
+	<% end %>
+<% elsif alert && alert.is_a?(String) %>
+	<p class="alert alert-danger"><%= alert %></p>
+<% end %>
