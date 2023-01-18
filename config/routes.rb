@@ -4,4 +4,6 @@ Rails.application.routes.draw do
   root "home#index"
 
   post "toggle_like" => "likes#toggle_like"
+
+  resources :comments, only: [:create, :destroy]
 end

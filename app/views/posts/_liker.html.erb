@@ -1,6 +1,10 @@
 <div class="d-flex justify-content-between">
 	<div class="d-flex">
-		<%= image_tag "user_no_pc.png", class: "img-thumbnail rounded-circle", style: "width: 2.5rem" %>
+		<% if current_user && current_user.profile_picture.attached? %>
+			<%= image_tag current_user.profile_picture, class: "img-thumbnail rounded-circle", style: "width: 2.5rem" %>
+		<% else %>
+			<%= image_tag "user_no_pc.png", class: "img-thumbnail rounded-circle", style: "width: 2.5rem" %>
+		<% end %>
 		<div class="d-flex flex-column mx-3 justify-content-center">
 			<small class="fw-bold overflow-hidden wrap" style="text-overflow: ellipsis; white-space: nowrap; max-width: 10rem">
 				<%= liker.username %>

@@ -6,8 +6,17 @@
 									id: "post#{post.id}actions_likeBtn" do %>
 			<i class="<%= post.likes.find_by(user: current_user) ? "fa-solid color-red" : "fa-regular" %> fa-heart fa-xl"></i>
 		<% end %>
+		<a href="#"
+			 class="text-decoration-none"
+			 data-bs-toggle="modal"
+			 data-bs-target="#post<%= post.id %>_commentsModal">
+			<i class="fa-regular fa-comment fa-xl fa-flip-horizontal text-dark"></i>
+		</a>
 	</div>
-	<a href="#" class="text-decoration-none text-dark" data-bs-toggle="modal" data-bs-target="#post<%= post.id %>_likesModal">
+	<a href="#"
+		 class="text-decoration-none text-dark"
+		 data-bs-toggle="modal"
+		 data-bs-target="#post<%= post.id %>_likesModal">
 		<small class="fw-bold my-1"><%= pluralize(post.likes.size, "like") %></small>
 	</a>
 
@@ -16,13 +25,13 @@
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<div class="modal-header">
-					<h5 class="modal-title" id="exampleModalLabel">Post Likes</h5>
+					<h5 class="modal-title" id="likesModalLabel">Post Likes</h5>
 					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 				</div>
 				<div class="modal-body">
 					<div class="d-flex flex-column gap-3">
 						<% post.likers.each do |liker| %>
-							<%= render "posts/liker", liker:  liker %>
+							<%= render "posts/liker", liker: liker %>
 						<% end %>
 					</div>
 				</div>
