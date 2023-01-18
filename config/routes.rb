@@ -1,9 +1,11 @@
 Rails.application.routes.draw do
-  resources :posts
   devise_for :users
-  root "home#index"
 
   post "toggle_like" => "likes#toggle_like"
+  resources :posts
 
   resources :comments, only: [:create, :destroy]
+  resources :users, only: :show
+
+  root "home#index"
 end
