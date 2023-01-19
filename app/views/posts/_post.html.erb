@@ -4,7 +4,7 @@
 			<div class="d-flex justify-content-between">
 				<div>
 					<% if post.user.profile_picture.attached? %>
-						<%= image_tag post.user.profile_picture, class: "img-thumbnail rounded-circle", style: "width: 10%" %>
+						<%= image_tag post.user.profile_picture, class: "img-thumbnail rounded-circle profile-image" %>
 					<% else %>
 						<%= image_tag "user_no_pc.png", class: "img-thumbnail rounded-circle", style: "width: 10%" %>
 					<% end %>
