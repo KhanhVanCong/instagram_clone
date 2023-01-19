@@ -111,3 +111,12 @@ body {
   }
 }
 
+.link-user {
+  text-decoration: none;
+  color: black;
+
+  &:hover {
+    color: #5c636a;
+  }
+}
+

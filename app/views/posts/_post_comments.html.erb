@@ -11,9 +11,11 @@
 	<% end %>
 	<% post.comments.last(5).each do |comment| %>
 		<p class="card-text m-0" id="comment<%= comment.id %>">
-			<span class="fw-bold">
-				<%= comment.user.username %>
-			</span>
+			<%= link_to comment.user, class: "link-user" do %>
+				<span class="fw-bold">
+					<%= comment.user.username %>
+				</span>
+			<% end %>
 			<%= comment.body %>
 		</p>
 	<% end %>

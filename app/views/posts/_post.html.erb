@@ -3,24 +3,32 @@
 		<div class="card-header bg-white">
 			<div class="d-flex justify-content-between">
 				<div>
-					<% if post.user.profile_picture.attached? %>
-						<%= image_tag post.user.profile_picture, class: "img-thumbnail rounded-circle profile-image" %>
-					<% else %>
-						<%= image_tag "user_no_pc.png", class: "img-thumbnail rounded-circle", style: "width: 10%" %>
+					<%= link_to post.user, class: "link-user" do %>
+						<% if post.user.profile_picture.attached? %>
+							<%= image_tag post.user.profile_picture, class: "img-thumbnail rounded-circle profile-image" %>
+						<% else %>
+							<%= image_tag "user_no_pc.png", class: "img-thumbnail rounded-circle profile-image", style: "width: 10%" %>
+						<% end %>
+						<span class="fw-bold mx-2"><%= post.user.username %></span>
 					<% end %>
-					<span class="fw-bold mx-2"><%= post.user.username %></span>
 				</div>
-				<div>
-					<div class="dropdown">
-						<a class="text-dark text-decoration-none fs-4" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-							...
-						</a>
-						<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-							<li><a class="dropdown-item" href="#">Edit Post</a></li>
-							<li><a class="dropdown-item" href="#">Delete Post</a></li>
-						</ul>
+				<% if post.user == current_user %>
+					<div>
+						<div class="dropdown">
+							<a class="text-dark text-decoration-none fs-4" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+								...
+							</a>
+							<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+								<!--							<li>-->
+								<%#= link_to "Edit Post", edit_post_path(post), class: "dropdown-item" %>
+								<!--							</li>-->
+								<li>
+									<%= button_to "Delete Post", post, method: :delete, data: { turbo_confirm: "Are you sure?" }, class: "dropdown-item" %>
+								</li>
+							</ul>
+						</div>
 					</div>
-				</div>
+				<% end %>
 			</div>
 
 		</div>
