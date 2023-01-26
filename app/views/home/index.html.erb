@@ -3,14 +3,11 @@
 	<div class="d-flex flex-column gap-3">
 		<%= render "story/stories_list" %>
 		<div class="d-flex flex-column">
-			<% @posts.each do |post| %>
-				<%= render post %>
-				<p>
-					<%= link_to "Show this post", post %>
-				</p>
+			<% @feeds.each do |feed| %>
+				<%= render "posts/post", post: feed %>
 			<% end %>
 		</div>
 
 	</div>
-	<%= render "suggestions/suggestions_list" %>
+	<%= render "suggestions/suggestions_list", suggestions: @suggestions %>
 </div>

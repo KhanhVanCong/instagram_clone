@@ -15,8 +15,6 @@
 	</div>
 
 	<% if liker != current_user %>
-		<%= link_to root_path, class: "text-decoration-none btn btn-primary" do %>
-			<small class="fw-bold text-white">Follow</small>
-		<% end %>
+		<%= render "layouts/shared/follow_state", user: liker %>
 	<% end %>
 </div>

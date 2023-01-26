@@ -1,15 +1,24 @@
 <div class="d-flex justify-content-between">
 	<div class="d-flex">
-		<%= image_tag "user_no_pc.png", class: "img-thumbnail rounded-circle border border-2 border-primary", style: "width: 3.5rem" %>
+		<% if suggestion && suggestion.profile_picture.attached? %>
+			<%= image_tag suggestion.profile_picture, class: "img-thumbnail rounded-circle border border-2 border-primary profile-image--medium" %>
+		<% else %>
+			<%= image_tag "user_no_pc.png", class: "img-thumbnail rounded-circle border border-2 border-primary profile-image--medium" %>
+		<% end %>
 		<div class="d-flex flex-column mx-2">
-			<small class="fw-bold">Khanh Van</small>
-			<small class="text-muted overflow-hidden" style="text-overflow: ellipsis ;white-space: nowrap; max-width: 10rem">Suggested for you by instagram</small>
+			<small class="fw-bold"><%= suggestion.username %></small>
+			<small class="text-muted overflow-hidden" style="text-overflow: ellipsis ;white-space: nowrap; max-width: 10rem">Suggested
+				for you by instagram</small>
 		</div>
 	</div>
 
-	<%= link_to root_path, class: "text-decoration-none" do %>
-		<small class="fw-bold text-primary">
-			Follow
-		</small>
+	<% if current_user.waiting_followings.include?(suggestion) %>
+		<%= button_to cancel_request_path(user_id: suggestion.id), method: :delete, data: { turbo: false }, class: "btn bg-transparent border-0" do %>
+			<small class="fw-bold text-secondary">Cancel</small>
+		<% end %>
+	<% else %>
+		<%= button_to follow_path(user_id: suggestion.id), method: :post, data: { turbo: false }, class: "btn bg-transparent border-0" do %>
+			<small class="fw-bold text-secondary">Follow</small>
+		<% end %>
 	<% end %>
 </div>

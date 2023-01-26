@@ -1,0 +1,22 @@
+<%= turbo_frame_tag "search_results" do %>
+	<% users.each do |user| %>
+		<li class="mt-3">
+			<div class="d-flex justify-content-between">
+				<div class="d-flex">
+					<% if user&.profile_picture.attached? %>
+						<%= image_tag user.profile_picture, class: "img-thumbnail rounded-circle profile-image" %>
+					<% else %>
+						<%= image_tag "user_no_pc.png", class: "img-thumbnail rounded-circle profile-image" %>
+					<% end %>
+					<div class="d-flex flex-column mx-3 justify-content-center">
+						<%= link_to user, class: "link-user" do %>
+							<small class="fw-bold overflow-hidden wrap" style="text-overflow: ellipsis; white-space: nowrap; max-width: 10rem">
+								<%= user.username %>
+							</small>
+						<% end %>
+					</div>
+				</div>
+			</div>
+		</li>
+	<% end %>
+<% end %>
